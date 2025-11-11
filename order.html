@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Omotech — Order</title>
+  <title>The Royal Plate — Order</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -11,7 +11,7 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="logo" href="index.html">Omotech</a>
+      <a class="logo" href="index.html">The Royal Plate</a>
       <nav class="nav">
         <a href="index.html">Home</a>
         <a href="menu.html">Menu</a>
@@ -26,26 +26,24 @@
     <section class="section">
       <div class="constrain">
         <h2>Your Order</h2>
-        <div id="cartArea" class="cart-area">
-          <!-- Filled by script.js -->
-        </div>
+        <div id="cartArea" class="cart-area"></div>
 
         <div class="order-form">
           <label for="custName">Name</label>
-          <input id="custName" type="text" placeholder="Jane Doe">
+          <input id="custName" type="text" placeholder="Your name">
 
           <label for="custPhone">Phone (include country code)</label>
           <input id="custPhone" type="tel" placeholder="+1 555 123 4567">
 
-          <label for="notes">Notes (allergies, reservation time)</label>
-          <textarea id="notes" rows="3" placeholder="E.g. Table for 2 at 7pm"></textarea>
+          <label for="notes">Notes</label>
+          <textarea id="notes" rows="3" placeholder="Allergies, reservation time, seating preference"></textarea>
 
           <div class="form-actions">
             <button id="sendWhatsApp" class="btn-primary">Send via WhatsApp</button>
-            <button id="clearCart" class="btn-outline">Clear</button>
+            <button id="clearCart" class="btn-outline">Clear cart</button>
           </div>
 
-          <p class="small muted">WhatsApp will open for final confirmation. Order is also stored locally in your browser.</p>
+          <p class="small muted">WhatsApp will open for final confirmation. Orders can also be recorded to your internal sheet.</p>
         </div>
       </div>
     </section>
@@ -53,7 +51,7 @@
 
   <footer class="site-footer">
     <div class="constrain">
-      <small>&copy; 2025 Omotech</small>
+      <small>&copy; 2025 The Royal Plate</small>
     </div>
   </footer>
 
