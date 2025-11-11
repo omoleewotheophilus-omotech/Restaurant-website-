@@ -1,16 +1,16 @@
 // -------- CONFIG (replace WA_NUMBER) --------
-const WA_NUMBER = "15551234567"; // <<-- REPLACE with your phone number in international format WITHOUT plus
-// Optional Google Sheet webhook (see instructions if you want to use)
+const WA_NUMBER = "15551234567"; // <<-- REPLACE with your phone number (no +)
+// Optional Google Sheet webhook URL (leave empty if not using)
 const SHEET_WEBHOOK = ""; // e.g. "https://script.google.com/macros/s/XXXXX/exec"
 
 // -------- Helpers & Cart (persists in localStorage) --------
 function loadCart(){
   try {
-    const raw = localStorage.getItem('omotech_cart');
+    const raw = localStorage.getItem('royalplate_cart');
     return raw ? JSON.parse(raw) : [];
   } catch(e){ return []; }
 }
-function saveCart(cart){ localStorage.setItem('omotech_cart', JSON.stringify(cart)); updateCartCount(); }
+function saveCart(cart){ localStorage.setItem('royalplate_cart', JSON.stringify(cart)); updateCartCount(); }
 function updateCartCount(){
   const cart = loadCart();
   document.querySelectorAll('#cartCount').forEach(el=>{
@@ -24,19 +24,19 @@ function addItemToCart(name, price){
   showToast(`${name} added to cart`);
 }
 function clearCart(){
-  localStorage.removeItem('omotech_cart');
+  localStorage.removeItem('royalplate_cart');
   updateCartCount();
-  renderCart(); // if on order page
+  renderCart();
 }
 
 // small toast
 function showToast(msg){
-  // simple alert on phones; you can replace with nicer UI later
-  if(window.navigator && window.navigator.vibrate) navigator.vibrate(40);
+  // quick alert for phone; replace with nicer UI if desired
+  if(window.navigator && window.navigator.vibrate) navigator.vibrate(30);
   alert(msg);
 }
 
-// populate "Add" buttons on menu pages
+// attach Add buttons on menu pages
 document.addEventListener('DOMContentLoaded', function(){
   updateCartCount();
 
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function(){
   // if on order page, render cart
   if(document.getElementById('cartArea')) renderCart();
 
-  // update cart buttons display targets (some pages have multiple #cartCount elements)
+  // update cart count elements (in case multiple)
   document.querySelectorAll('#cartCount').forEach(el=>el.textContent = loadCart().length);
 });
 
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       return `${it.name} — $${it.price.toFixed(2)} x ${qty} = $${itemTotal.toFixed(2)}`;
     }).join('\n');
 
-    const message = `Hello Omotech,\nI would like to place an order/reservation:\n\n${lines}\n\nTotal: $${total.toFixed(2)}\nName: ${custName}\nPhone: ${custPhone}\nNotes: ${notes}`;
+    const message = `Hello The Royal Plate,\nI would like to place an order/reservation:\n\n${lines}\n\nTotal: $${total.toFixed(2)}\nName: ${custName}\nPhone: ${custPhone}\nNotes: ${notes}`;
 
     // Optional: save to Google Sheet webhook (non-blocking)
     if(SHEET_WEBHOOK){
@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         customerPhone: custPhone,
         notes: notes
       };
-      // fire-and-forget
       fetch(SHEET_WEBHOOK, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -145,11 +144,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     // Open WhatsApp
     const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
-    // update contact link on contact page
     const whLink = document.getElementById('whLink'); if(whLink) whLink.href = waUrl;
     window.open(waUrl, '_blank');
 
-    // optionally keep or clear cart — here we clear after sending
+    // clear cart and update UI
     clearCart();
     showToast('WhatsApp opened — please confirm and send your message.');
   });
