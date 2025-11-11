@@ -1,1 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Omotech — Menu</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Omotech</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="order.html">Order</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a class="btn-outline small" href="order.html">Cart (<span id="cartCount">0</span>)</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="constrain">
+        <h2>Chef's Menu</h2>
+        <p class="lead">A selection of seasonal and signature dishes crafted to perfection.</p>
+
+        <div class="menu-grid" id="menuGrid">
+          <!-- Menu items (data-name, data-price used by script.js) -->
+          <article class="menu-item" data-name="Seared Scallops" data-price="28">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1000" alt="">
+            <div class="menu-body">
+              <h3>Seared Scallops</h3>
+              <p class="desc">Citrus beurre blanc, micro herbs.</p>
+              <div class="meta">
+                <span class="price">$28</span>
+                <button class="btn-outline order-add">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-name="Truffle Risotto" data-price="32">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1000" alt="">
+            <div class="menu-body">
+              <h3>Truffle Risotto</h3>
+              <p class="desc">Creamy arborio, shaved black truffle.</p>
+              <div class="meta">
+                <span class="price">$32</span>
+                <button class="btn-outline order-add">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-name="Wagyu Steak" data-price="48">
+            <img src="https://images.unsplash.com/photo-1604908177546-9b7be7f9f2a5?w=1000" alt="">
+            <div class="menu-body">
+              <h3>Wagyu Steak</h3>
+              <p class="desc">Charred, herb butter, seasonal garnish.</p>
+              <div class="meta">
+                <span class="price">$48</span>
+                <button class="btn-outline order-add">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-name="Chocolate Opera" data-price="12">
+            <img src="https://images.unsplash.com/photo-1543353071-087092ec3935?w=1000" alt="">
+            <div class="menu-body">
+              <h3>Chocolate Opera</h3>
+              <p class="desc">Layered mousse, espresso glaze.</p>
+              <div class="meta">
+                <span class="price">$12</span>
+                <button class="btn-outline order-add">Add</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="constrain">
+      <small>&copy; 2025 Omotech</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
